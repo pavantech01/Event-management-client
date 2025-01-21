@@ -1,36 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-function Events() {
+const Events = () => {
+    const [events, setEvents] = useState([]);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        const fetchEvents = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/events');
+                setEvents(response.data);
+            } catch (err) {
+                setError('Failed to fetch events.');
+            }
+        };
+
+        fetchEvents();
+    }, []);
+
+    const handleDelete = async (eventId) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/events/${eventId}`);
+            setEvents(events.filter(event => event.id !== eventId));
+        } catch (err) {
+            setError('Failed to delete event.');
+        }
+    };
+
     return (
         <div className="max-w-6xl mx-auto p-6">
             <h1 className="text-4xl font-bold text-center mb-8">Upcoming Events</h1>
-            <p className="text-center text-lg text-gray-600 mb-6">
-                Join us for a variety of exciting events tailored to your needs. Whether it's a corporate gathering, a social celebration, or a cultural festival, we have something for everyone!
-            </p>
+            {error && <p className="text-red-500">{error}</p>}
             <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 list-none">
-                <li className="bg-white shadow-lg rounded-lg p-4 transition-transform transform hover:scale-105">
-                    <img src="https://picsum.photos/200/305" alt="Corporate Event" className="w-full h-32 object-cover rounded-t-lg" />
-                    <h2 className="text-xl font-semibold mt-2">Corporate Events</h2>
-                    <p className="text-gray-600">Professional gatherings that inspire collaboration and innovation.</p>
-                </li>
-                <li className="bg-white shadow-lg rounded-lg p-4 transition-transform transform hover:scale-105">
-                    <img src="https://picsum.photos/200/306" alt="Social Event" className="w-full h-32 object-cover rounded-t-lg" />
-                    <h2 className="text-xl font-semibold mt-2">Social Events</h2>
-                    <p className="text-gray-600">Celebrate milestones and create memories with friends and family.</p>
-                </li>
-                <li className="bg-white shadow-lg rounded-lg p-4 transition-transform transform hover:scale-105">
-                    <img src="https://picsum.photos/200/307" alt="Cultural Event" className="w-full h-32 object-cover rounded-t-lg" />
-                    <h2 className="text-xl font-semibold mt-2">Cultural Events</h2>
-                    <p className="text-gray-600">Experience the richness of diverse cultures through art, music, and food.</p>
-                </li>
-                <li className="bg-white shadow-lg rounded-lg p-4 transition-transform transform hover:scale-105">
-                    <img src="https://picsum.photos/200/308" alt="Upcoming Event" className="w-full h-32 object-cover rounded-t-lg" />
-                    <h2 className="text-xl font-semibold mt-2">Upcoming Events</h2>
-                    <p className="text-gray-600">Stay tuned for our exciting upcoming events and activities!</p>
-                </li>
+                {events.map(event => (
+                    <li key={event.id} className="bg-white shadow-lg rounded-lg p-4 transition-transform transform hover:scale-105">
+                        <img src={event.imageUrl} alt={event.title} className="w-full h-32 object-cover rounded-t-lg" />
+                        <h2 className="text-xl font-semibold mt-2">{event.title}</h2>
+                        <p className="text-gray-600">{event.description}</p>
+                        <button onClick={() => handleDelete(event.id)} className="mt-2 px-4 py-2 font-bold text-white bg-red-500 rounded-lg hover:bg-red-600">
+                            Delete
+                        </button>
+                    </li>
+                ))}
             </ul>
         </div>
     );
-}
+};
 
 export default Events;
