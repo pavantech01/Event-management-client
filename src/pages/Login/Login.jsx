@@ -12,8 +12,11 @@ const Login = () => {
             const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
             const { token, user } = response.data;
             // Store token and user information (e.g., in local storage)
+            localStorage.setItem('role', user.role); // Store user role
+            localStorage.setItem('fullName', user.fullName); // Store name
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
+
             // Redirect or update UI as needed
             window.location.href = '/'; 
         } catch (err) {
@@ -53,6 +56,7 @@ const Login = () => {
                         Login
                     </button>
                 </form>
+                <p className="text-center text-sm text-gray-600 mt-4">Don't have an Account? <a href="/signup" className="text-blue-500 hover:text-blue-600 no-underline">SignUp</a></p>
             </div>
         </div>
     );

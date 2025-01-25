@@ -24,8 +24,8 @@ function Footer() {
                     </div>
                     <div>
                         <h2 className="text-xl font-bold mb-4">Contact Us</h2>
-                        <p className="text-gray-400">Email: info@eventmanagement.com</p>
-                        <p className="text-gray-400">Phone: (123) 456-7890</p>
+                        <p className="text-gray-400">Email: raibagipavan14@gmail.com</p>
+                        <p className="text-gray-400">Phone: +91 8884279145</p>
                         <div className="flex space-x-4 mt-4">
                             <a href="facebook" className="text-gray-400 hover:text-white"><FaFacebookF /></a>
                             <a href="g" className="text-gray-400 hover:text-white"><FaTwitter /></a>
@@ -35,7 +35,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="border-t border-gray-700 mt-8 pt-4 text-center">
-                    <p className="text-gray-400">&copy; 2023 Event Management. All rights reserved.</p>
+                    <p className="text-gray-400">&copy; 2025 Event Management. All rights reserved.</p>
                 </div>
             </div>
         </footer>
