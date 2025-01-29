@@ -124,14 +124,15 @@ const Signup = () => {
                         Sign Up
                     </button>
 
-                    <p className='text-center text-sm text-gray-600 mt-4'><hr style={{display: 'inline-block', width: '40%'}} />or<hr style={{display: 'inline-block', width: '40%'}} /></p>
+                        {/* horzantal line */}
+                    {/* <p className='text-center text-sm text-gray-600 mt-4'><hr style={{display: 'inline-block', width: '40%'}} />or<hr style={{display: 'inline-block', width: '40%'}} /></p> */}
                     
 
-                    <button
+                    {/* <button
                         type="button"
                         className="w-full px-4 py-2 font-bold text-white bg-red-500 rounded-lg hover:bg-red-600">
                         <i className="fab fa-google mr-2"></i> Continue with Google
-                    </button>
+                    </button> */}
                 </form>
                 <p className="text-center text-sm text-gray-600 mt-4">Already have an account? <a href="/login" className="text-blue-500 hover:text-blue-600 no-underline">Log in</a></p>
             </div>

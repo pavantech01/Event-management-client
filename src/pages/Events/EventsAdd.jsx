@@ -58,8 +58,10 @@ const EventsAdd = () => {
                     'Authorization': `Bearer ${token}`, 
                 },
             });
+            
 
             setSuccess('Event created successfully!');
+            window.location.href = '/events';
             console.log('Event created:', response.data);
             // Optionally, clear the form after success
             setTitle('');

@@ -132,17 +132,17 @@ function About() {
         cssEase: "linear"
     };
     return (
-        <div className="about-page min-h-screen bg-gradient-to-b from-white to-pink-50 relative top-16">
+        <div className="about-page min-h-screen bg-gradient-to-b from-white to-pink-50 relative top-10">
             {/* Hero Section */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <h1 className="text-5xl font-bold text-center text-indigo-900 mb-6">
+                <h1 className="text-4xl font-bold text-center text-indigo-900 mb-6">
                     About Us
                 </h1>
 
                 {/* Main Content Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
                     <div className="space-y-6">
-                        <h2 className="text-4xl font-bold text-pink-500">
+                        <h2 className="text-3xl font-bold text-pink-500">
                             Team Of Passionate People
                         </h2>
                         <p className="text-gray-600 text-lg leading-relaxed">
@@ -261,7 +261,7 @@ function About() {
                 </div>
 
                 {/* Policies Section */}
-                <div className="text-center max-w-3xl mx-auto">
+                <div className="text-center max-w-3xl mx-auto mb-12">
                     <h2 className="text-3xl font-bold text-indigo-900 mb-6">Our Policies</h2>
                     <p className="text-gray-600">
                         We prioritize transparency and reliability in all our dealings. Our policies are designed
